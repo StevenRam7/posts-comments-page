@@ -15,7 +15,7 @@ function App() {
     }
     if (buttonText === "Hide Comments") {
       setButtonText("Show Comments")
-      setComments([]);
+      
     }
   }
 
@@ -43,7 +43,7 @@ useEffect (() => {
     loadComment();     
 
     //return () => Abort.abort();
-}, [commentHandler]);
+}, []);
 
   return (
     <div className="App">
@@ -55,11 +55,11 @@ useEffect (() => {
           <>
           <h3>{post.title.toUpperCase()}</h3><p>{"Post ID# " + post.id}</p><p>{post.body}</p>
           <button onClick={commentHandler}>{buttonText}</button>
-          {comments.map((comment) => (
+          {buttonText === "Hide Comments" && comments.filter(comment => comment.postId === post.id).map((comment) => (
             <div className="comment">
-            <h4>{post.id === comment.id ? comment.name : null}</h4>
-            <p>{post.id === comment.id ? comment.body : null}</p>
-            <p>{post.id === comment.id ? "Email: " + comment.email : null}</p>
+            <h4>{comment.name}</h4>
+            <p>{comment.body}</p>
+            <p>{"Email: " + comment.email}</p>
             </div>
           ))}
           </>
