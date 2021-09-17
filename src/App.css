@@ -51,3 +51,11 @@ h1 {
   text-align: left;
   margin-left: 10px;
 }
+
+.post-and-coms {
+  padding: 10px;
+  border-width: thick;
+  border-style: solid;
+  border-color: darkblue;
+  margin: 20px;
+}
