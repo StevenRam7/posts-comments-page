@@ -19,8 +19,6 @@ function App() {
     }
   }
 
-  //fix button so it still works after first few clicks
-
   const postPage = "http://jsonplaceholder.typicode.com/posts";
   const commentPage = "http://jsonplaceholder.typicode.com/comments";
     
@@ -34,15 +32,12 @@ function App() {
  }, []);
 
 useEffect (() => {
-  //const Abort = new AbortController;
   async function loadComment() {
      const response = await fetch(commentPage);
      const commentsFromAPI = await response.json();
      setComments(commentsFromAPI);
    }
     loadComment();     
-
-    //return () => Abort.abort();
 }, []);
 
   return (
