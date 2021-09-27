@@ -1,5 +1,5 @@
-import React from "react";
 import { useEffect } from "react";
+//unused
 
 function Posts() {
     const postPage = "http://jsonplaceholder.typicode.com/posts";

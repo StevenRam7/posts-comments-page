@@ -1,4 +1,4 @@
-import React from "react";
+//unused
 
 function BlogInfo({ blogs, setBlogs, deleteHandler, retrieveHandler }) {
 
