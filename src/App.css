@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: royalblue;
   min-height: 100vh;
@@ -42,7 +31,8 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: oblique;
   color: black;
-}
+  margin-top: 10px;
+  }
 
 .Post-list {
   text-align: left;
@@ -53,8 +43,9 @@
   padding: 10px;
   border-width: thick;
   border-style: solid;
-  border-color: darkblue;
+  border-color: whitesmoke;
   margin: 20px;
+  background-color: royalblue;
 }
 
 h1 {
@@ -66,10 +57,10 @@ h1 {
   margin-right: 480px;
   border-width: thick;
   border-style: solid;
-  border-color: darkblue;
+  border-color: whitesmoke;
   margin-top: 10px;
 }
 
-.btn-btn-primary-btn-outline-dark {
-  font-style: oblique;
+h3, h4, h1, p, .comment {
+  background-color: royalblue;
 }
