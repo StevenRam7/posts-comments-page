@@ -49,7 +49,7 @@ useEffect (() => {
       {posts.map((post) => (
           <div className="post-and-coms">
           <h3>{post.title.toUpperCase()}</h3><p>{"Post ID# " + post.id}</p><p>{post.body}</p>
-          <button onClick={commentHandler}>{buttonText}</button>
+          <button type="button" class="btn btn-primary btn-outline-dark" onClick={commentHandler}>{buttonText}</button>
           {buttonText === "Hide Comments" && comments.filter(comment => comment.postId === post.id).map((comment) => (
             <div className="comment">
             <h4>{comment.name}</h4>

@@ -15,9 +15,5 @@ code {
 * {
   background-color: rgb(153, 8, 153);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-button {
-  font-weight: bolder;
-  background-color: darkblue;
+  color: black;
 }
