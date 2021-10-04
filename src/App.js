@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 function App() {
-
+//modify so that each button only shows comments for the related text
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [buttonText, setButtonText] = useState("Show Comments");
