@@ -2,10 +2,11 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 function App() {
-//modify so that each button only shows comments for the related text
+//too many re-renders
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [buttonText, setButtonText] = useState("Show Comments");
+  const [postID, setPostID] = useState("");
 
   const commentHandler = (event) => {
     event.preventDefault();
@@ -32,13 +33,13 @@ function App() {
  }, []);
 
 useEffect (() => {
-  async function loadComment() {
+  async function loadComments() {
      const response = await fetch(commentPage);
      const commentsFromAPI = await response.json();
      setComments(commentsFromAPI);
    }
-    loadComment();     
-}, []);
+    loadComments();     
+}, [postID]);
 
   return (
     <div className="App">
@@ -48,7 +49,7 @@ useEffect (() => {
       <div className="Post-list">
       {posts.map((post) => (
           <div className="post-and-coms">
-          <h3>{post.title.toUpperCase()}</h3><p>{"Post ID " + "#" + post.id}</p><p>{post.body}</p>
+          <h3>{setPostID(post.id) && post.title.toUpperCase()}</h3><p>{"Post ID " + "#" + post.id}</p><p>{post.body}</p>
           <button type="button" class="btn btn-primary btn-outline-dark" onClick={commentHandler}>{buttonText}</button>
           {buttonText === "Hide Comments" && comments.filter(comment => comment.postId === post.id).map((comment) => (
             <div className="comment">
