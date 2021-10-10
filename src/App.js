@@ -7,7 +7,7 @@ function App() {
   const [buttonText, setButtonText] = useState("Show Comments");
   const [postID, setPostID] = useState("");
   const [currentButtonText, setCurrentButtonText] = useState("");
-
+  document.title = "Posts & Comments";
   const time = Date.now();
 
   const commentHandler = (event) => {
