@@ -76,8 +76,8 @@ useEffect (() => {
              
        )}
      </div>
-      <div className="retrieval">
-        <p>{"Retrieved at: " + new Date(time).toLocaleString('en-US')}</p>
+      <div className="Retrieval">
+        <p id="ret">{"Retrieved at: " + new Date(time).toLocaleString('en-US')}</p>
       </div>
     </div>
   );
