@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 function App() {
-//too many re-renders
+
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [buttonText, setButtonText] = useState("Show Comments");
@@ -10,6 +10,7 @@ function App() {
 
   const commentHandler = (event) => {
     event.preventDefault();
+    
     if (buttonText === "Show Comments") {
       setButtonText("Hide Comments");
       
@@ -24,12 +25,21 @@ function App() {
   const commentPage = "http://jsonplaceholder.typicode.com/comments";
     
  useEffect (() => {
+   const abortController = new AbortController();
    async function loadPosts() {
-      const response = await fetch(postPage);
+     try{
+      const response = await fetch(postPage, { signal: abortController.signal });
       const postsFromAPI = await response.json();
       setPosts(postsFromAPI);
+     } catch(error) {
+       return <p>Page could not load!</p>
+     }
+      
     }
-     loadPosts();     
+     loadPosts();
+     return () => {
+       abortController.abort();
+     }     
  }, []);
 
 useEffect (() => {
@@ -39,7 +49,7 @@ useEffect (() => {
      setComments(commentsFromAPI);
    }
     loadComments();     
-}, [postID]);
+}, []);
 
   return (
     <div className="App">
@@ -49,8 +59,8 @@ useEffect (() => {
       <div className="Post-list">
       {posts.map((post) => (
           <div className="post-and-coms">
-          <h3>{setPostID(post.id) && post.title.toUpperCase()}</h3><p>{"Post ID " + "#" + post.id}</p><p>{post.body}</p>
-          <button type="button" class="btn btn-primary btn-outline-dark" onClick={commentHandler}>{buttonText}</button>
+          <h3>{post.title.toUpperCase()}</h3><p>{"Post ID " + "#" + post.id}</p><p>{post.body}</p>
+          <button type="button" class="btn btn-primary btn-outline-dark" onClick={() => setPostID(post.id), commentHandler}>{buttonText}</button>
           {buttonText === "Hide Comments" && comments.filter(comment => comment.postId === post.id).map((comment) => (
             <div className="comment">
             <h4>{comment.name}</h4>
